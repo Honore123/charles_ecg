@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'ECG') }}</title>
 
         <link rel="stylesheet" href="{{asset('assets/feather/feather.css')}}">
         <link rel="stylesheet" href="{{asset('assets/ti-icons/css/themify-icons.css')}}">
@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="{{asset('custom/css/vertical-layout-light/style.css')}}">
         <!-- endinject -->
         <link rel="shortcut icon" href="{{asset('images/favicon.png')}}" />
+        @stack('styles')
     </head>
     <body>
         <div class="container-scroller">
@@ -60,5 +61,6 @@
         <script src="{{asset('custom/js/dashboard.js')}}"></script>
         <script src="js/Chart.roundedBarCharts.js"></script>
         <!-- End custom js for this page-->
+        @stack('scripts')
     </body>
 </html>
