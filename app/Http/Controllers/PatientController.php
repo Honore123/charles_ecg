@@ -21,7 +21,7 @@ class PatientController extends Controller
     {
         return view('patient.patient_data', [
             'patient' => $patient,
-            'ecgDatas' => EcgData::query()->where('patient_id', $patient->id)->get(),
+            'ecgDatas' => EcgData::query()->where('patient_id', $patient->id)->orderBy('id','DESC')->get(),
         ]);
     }
 

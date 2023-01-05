@@ -33,9 +33,9 @@
                       <th>
                         ECG Data
                       </th>
-                      <th>
+                      {{-- <th>
                           Status
-                      </th>
+                      </th> --}}
                       <th>
                         Recorded At
                       </th>
@@ -46,13 +46,13 @@
                           <tr>
                               <td>{{$loop->iteration++}}</td>
                               <td>{{$ecg->data}}</td>
-                              <td>
+                              {{-- <td>
                                 @if ($ecg->data != 0)
                                   <label class="badge badge-outline-success">Normal</label>
                                 @else
                                   <label class="badge badge-outline-danger">Critical</label>
                                 @endif
-                              </td>
+                              </td> --}}
                               <td>{{$ecg->created_at}}</td>
                           </tr>
                       @empty

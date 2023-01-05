@@ -13,8 +13,8 @@
               <div class="card card-tale">
                 <div class="card-body">
                   <p class="mb-4">Pending Reports</p>
-                  <p class="fs-30 mb-2">4006</p>
-                  <p>10.00% (30 days)</p>
+                  <p class="fs-30 mb-2">4,000</p>
+                  {{-- <p>10.00% (30 days)</p> --}}
                 </div>
               </div>
             </div>
@@ -23,7 +23,7 @@
                 <div class="card-body">
                   <p class="mb-4">Total Patients</p>
                   <p class="fs-30 mb-2">{{$patient}}</p>
-                  <p>22.00% (30 days)</p>
+                  {{-- <p>22.00% (30 days)</p> --}}
                 </div>
               </div>
             </div>

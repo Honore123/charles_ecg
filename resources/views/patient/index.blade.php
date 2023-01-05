@@ -37,9 +37,9 @@
                         <th>
                             Location
                         </th>
-                        <th>
+                        {{-- <th>
                             Status
-                        </th>
+                        </th> --}}
                         <th>
                           Actions
                         </th>
@@ -53,13 +53,13 @@
                                 <td>{{$patient->email}}</td>
                                 <td>{{$patient->phone_number}}</td>
                                 <td>{{$patient->district}}-{{$patient->province}}</td>
-                                <td>
+                                {{-- <td>
                                   @if ($patient->status == 0)
                                   <label class="badge badge-outline-success">Normal</label>
                                   @elseif($patient->status = 1)
                                   <label class="badge badge-outline-danger">Critical</label>
                                   @endif
-                                </td>
+                                </td> --}}
                                 <td>
                                     <div class="dropdown">
                                         <button class="btn btn-outline-primary py-2 dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
