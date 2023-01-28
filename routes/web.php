@@ -26,6 +26,7 @@ Route::prefix('patients')->middleware('auth')->group(function() {
     Route::get('edit/{patient}', [PatientController::class, 'edit'])->name('patient.edit');
     Route::get('data/{patient}', [PatientController::class, 'patientData'])->name('patient.data');
     Route::post('',[PatientController::class, 'store'])->name('patient.store');
+    
     Route::put('{patient}', [PatientController::class, 'update'])->name('patient.update');
 });
 

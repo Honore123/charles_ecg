@@ -7,6 +7,9 @@
             <h6 class="font-weight-normal mb-0">Patient's Statistical data</h6>
         </div>
         <div class="col-md-6 text-right">
+          <a class="btn btn-success mr-5" href="">
+            <i class="ti-bell"></i> Notify Patient
+         </a>
             <a class="btn btn-primary" href="{{route('patient.index')}}">
                 <i class="ti-angle-left"></i> Back
              </a>
@@ -14,7 +17,11 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">ECG Graph</h4>
+                <div class="row">
+                  <div class="col"><h4 class="card-title">ECG Graph</h4></div>
+                  <div class="col text-right">Heart Rate: <span class="badge bg-success text-white">1000</span>  |  Heart Rate Variability: 
+                    <span class="badge bg-primary text-white">20</span></div>
+                </div>
                 <canvas id="ecg_data_chart"></canvas>
               </div>
             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EcgData;
+use App\Models\Notification;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -69,5 +70,8 @@ class PatientController extends Controller
         $patient->update($data);
 
         return redirect()->route('patient.index')->with('success', 'Patient updated successfully');
+    }
+    public function notifyPatient(Patient $patient) {
+        event(new Notification('Hello, You need to see your doctor ASAP!'));
     }
 }

@@ -14,5 +14,8 @@
         "postcss": "^8.4.6",
         "tailwindcss": "^3.1.0",
         "vite": "^3.0.0"
+    },
+    "dependencies": {
+        "@pusher/pusher-websocket-react-native": "^1.2.1"
     }
 }
