@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EcgDataController;
+use App\Http\Controllers\HeartDataController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -25,8 +26,8 @@ Route::prefix('patients')->middleware('auth')->group(function() {
     Route::get('add', [PatientController::class, 'add'])->name('patient.add');
     Route::get('edit/{patient}', [PatientController::class, 'edit'])->name('patient.edit');
     Route::get('data/{patient}', [PatientController::class, 'patientData'])->name('patient.data');
+    Route::get('notify/{patient}', [PatientController::class, 'notifyPatient'])->name('patient.notify');
     Route::post('',[PatientController::class, 'store'])->name('patient.store');
-    
     Route::put('{patient}', [PatientController::class, 'update'])->name('patient.update');
 });
 
@@ -39,5 +40,7 @@ Route::prefix('settings')->middleware('auth')->group(function() {
 Route::get('chart/data/{patient}', [EcgDataController::class, 'chartData'])->middleware('auth');
 
 Route::get('ecg_data/{patient}/{data}', [EcgDataController::class, 'store']);
+Route::get('heart_data/{patient}/{heart_rate}/{heart_variability}', [HeartDataController::class, 'store']);
+
 
 require __DIR__.'/auth.php';

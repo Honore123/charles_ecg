@@ -7,20 +7,30 @@
             <h6 class="font-weight-normal mb-0">Patient's Statistical data</h6>
         </div>
         <div class="col-md-6 text-right">
-          <a class="btn btn-success mr-5" href="">
+          <a class="btn btn-success mr-5" href="{{route('patient.notify',$patient->id)}}">
             <i class="ti-bell"></i> Notify Patient
          </a>
             <a class="btn btn-primary" href="{{route('patient.index')}}">
                 <i class="ti-angle-left"></i> Back
              </a>
         </div>
+        @if($patient->status == 0)
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <p>Patient has revocked data visibility. Mean while you can contact him/her by pressing <span class="badge bg-success text-white">Notification</span> Button</p>
+
+              </div>
+            </div>
+          </div>
+        @else
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
                 <div class="row">
                   <div class="col"><h4 class="card-title">ECG Graph</h4></div>
-                  <div class="col text-right">Heart Rate: <span class="badge bg-success text-white">1000</span>  |  Heart Rate Variability: 
-                    <span class="badge bg-primary text-white">20</span></div>
+                  <div class="col text-right">Heart Rate: <span class="badge bg-success text-white">{{isset($heart->heart_rate) ? $heart->heart_rate : 'No data' }}</span>  |  Heart Rate Variability: 
+                    <span class="badge bg-primary text-white">{{isset($heart->heart_rate_variability) ? $heart->heart_rate_variability : 'No data' }}</span></div>
                 </div>
                 <canvas id="ecg_data_chart"></canvas>
               </div>
@@ -70,6 +80,7 @@
             </div>
           </div>
         </div>
+        @endif
   
     </div>
 @endsection

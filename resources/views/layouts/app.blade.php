@@ -60,6 +60,25 @@
         <!-- Custom js for this page-->
         <script src="{{asset('custom/js/dashboard.js')}}"></script>
         <script src="js/Chart.roundedBarCharts.js"></script>
+        <script type="module">
+          // Import the functions you need from the SDKs you need
+          import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
+          // TODO: Add SDKs for Firebase products that you want to use
+          // https://firebase.google.com/docs/web/setup#available-libraries
+        
+          // Your web app's Firebase configuration
+          const firebaseConfig = {
+            apiKey: "AIzaSyDpQjHrw1qzlin0REnSXrJ_Sq6I09h3GSw",
+            authDomain: "ecgportal-dfd69.firebaseapp.com",
+            projectId: "ecgportal-dfd69",
+            storageBucket: "ecgportal-dfd69.appspot.com",
+            messagingSenderId: "236099508475",
+            appId: "1:236099508475:web:343b21a78b6a5d4513385e"
+          };
+        
+          // Initialize Firebase
+          const app = initializeApp(firebaseConfig);
+        </script>
         <!-- End custom js for this page-->
         @stack('scripts')
     </body>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\EcgData;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class EcgDataController extends Controller
@@ -18,9 +19,13 @@ class EcgDataController extends Controller
         echo "data recorded";
     }
 
-    public function chartData($patient)
+    public function chartData(Patient $patient)
     {
-        $response = EcgData::query()->where('patient_id', $patient)->orderBy('id', 'DESC')->take(80)->get();
+        $response = "";
+        if($patient->status == 1) {
+            $response = EcgData::query()->where('patient_id', $patient->id)->orderBy('id', 'DESC')->take(80)->get();
+        }
+        
     
         return response()->json($response->reverse()->values());
     }

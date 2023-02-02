@@ -3,11 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\EcgData;
+use App\Models\HeartData;
 use App\Models\Notification;
 use App\Models\Patient;
+use App\Notifications\PatientNotification;
+use GuzzleHttp\Psr7\Header;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\Rule;
+use YieldStudio\LaravelExpoNotifier\Dto\ExpoMessage;
 
 class PatientController extends Controller
 {
@@ -22,6 +27,7 @@ class PatientController extends Controller
     {
         return view('patient.patient_data', [
             'patient' => $patient,
+            'heart' => HeartData::query()->where('patient_id', $patient->id)->orderBy('id','DESC')->first(),
             'ecgDatas' => EcgData::query()->where('patient_id', $patient->id)->orderBy('id','DESC')->get(),
         ]);
     }
@@ -72,6 +78,13 @@ class PatientController extends Controller
         return redirect()->route('patient.index')->with('success', 'Patient updated successfully');
     }
     public function notifyPatient(Patient $patient) {
-        event(new Notification('Hello, You need to see your doctor ASAP!'));
+      
+        Http::acceptJson()->post('https://exp.host/--/api/v2/push/send', [
+            "to" => $patient->expo_token,
+            "title"=>"Hello " . $patient->lastname,
+            "body"=> "You need to check on me anytime"
+        ]);
+
+        return redirect()->back()->with('success', 'Notification sent to ' . $patient->lastname . ' successfully');
     }
 }

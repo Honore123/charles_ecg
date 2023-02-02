@@ -19,6 +19,9 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::get('data/{patient}', [EcgApiController::class, 'index']);
     Route::prefix('users')->group(function() {
         Route::post('logout', [AuthApiController::class, 'logout']);
+        Route::post('token/{patient}', [AuthApiController::class, 'addTokens']);
     });
+    Route::get('data/{patient}/{state}', [EcgApiController::class, 'dataVisibility']);
+   
 });
 Route::post('users/login', [AuthApiController::class, 'login']);
